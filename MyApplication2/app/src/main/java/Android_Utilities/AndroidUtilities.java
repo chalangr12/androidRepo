@@ -9,35 +9,46 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.example.chalang.myapplication.MainActivity;
 import com.example.chalang.myapplication.R;
+
+import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by Chalang on 12/19/2014.
  */
 public class AndroidUtilities {
+    MainActivity main;
+    Location loc;
+
+public AndroidUtilities(MainActivity main)
+{
+    this.main = main;
+    initializeLocation();
+}
 
 
+    public double getLatitude()
+    {
+        return loc.getLatitude();
+    }
+
+    public double getLongitude()
+    {
+        return loc.getLongitude();
+    }
+
+    public Date getTimeAndDate()
+    {
+        Calendar calendar = Calendar.getInstance();
+        return calendar.getTime();
+    }
 
 
-
-
-    public void getLatitudeAndLongitude(Context context){
-//        LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-//        String locationString = Context.LOCATION_SERVICE;
-//        String locationProvider = LocationManager.GPS_PROVIDER;
-//        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-//        if(location == null){
-//            System.out.println("ERROR");
-//        }
-//        double latitude;
-//        double longitude;
-//        longitude = location.getLongitude();
-//        latitude = location.getLatitude();
-//
-//        TextView text1 = (TextView)findViewById(R.id.textView);
-//        text1.setText("Longitude: " +longitude);
-//        TextView text2 = (TextView)findViewById(R.id.textView2);
-//        text2.setText("Latitude: " + latitude);
-
+    public void initializeLocation()
+    {
+        LocationManager lm = (LocationManager)main.getSystemService(Context.LOCATION_SERVICE);
+        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
 }

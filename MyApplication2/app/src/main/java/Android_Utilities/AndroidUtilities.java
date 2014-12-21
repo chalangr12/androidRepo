@@ -1,8 +1,10 @@
 package Android_Utilities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.location.Location;
 import android.location.LocationManager;
+import android.provider.MediaStore;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,7 +22,7 @@ import java.util.Date;
  */
 public class AndroidUtilities {
     MainActivity main;
-    Location loc;
+    Location location;
 
 public AndroidUtilities(MainActivity main)
 {
@@ -31,12 +33,12 @@ public AndroidUtilities(MainActivity main)
 
     public double getLatitude()
     {
-        return loc.getLatitude();
+        return location.getLatitude();
     }
 
     public double getLongitude()
     {
-        return loc.getLongitude();
+        return location.getLongitude();
     }
 
     public Date getTimeAndDate()
@@ -45,10 +47,16 @@ public AndroidUtilities(MainActivity main)
         return calendar.getTime();
     }
 
-
     public void initializeLocation()
     {
         LocationManager lm = (LocationManager)main.getSystemService(Context.LOCATION_SERVICE);
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        this.location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
     }
+
+    public void getCamera()
+    {
+        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        this.main.startActivityForResult(intent, 1);
+    }
+
 }

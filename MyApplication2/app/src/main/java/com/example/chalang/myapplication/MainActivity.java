@@ -1,5 +1,6 @@
 package com.example.chalang.myapplication;
 
+import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
 import android.location.Location;
@@ -19,14 +20,16 @@ import Android_Utilities.AndroidUtilities;
 
 
 public class MainActivity extends ActionBarActivity {
-
+   AndroidUtilities utils;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        AndroidUtilities utils = new AndroidUtilities(this);
+        utils = new AndroidUtilities(this);
+        utils.getCamera();
+
 //        Location loc = utils.getLatitudeAndLongitude();
        // getLocation();
 //        getTimeAndDate();

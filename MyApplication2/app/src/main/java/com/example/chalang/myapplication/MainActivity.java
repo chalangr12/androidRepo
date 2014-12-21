@@ -30,41 +30,11 @@ public class MainActivity extends ActionBarActivity {
         utils = new AndroidUtilities(this);
         utils.getCamera();
 
-//        Location loc = utils.getLatitudeAndLongitude();
-       // getLocation();
-//        getTimeAndDate();
-//        final Button button = (Button) findViewById(R.id.button);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-//
-//            }
-//        });
 
 
     }
 
-    public void getLocation() {
-        LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        String locationString = Context.LOCATION_SERVICE;
-        String locationProvider = LocationManager.GPS_PROVIDER;
-        Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-        double latitude;
-        double longitude;
-        longitude = location.getLongitude();
-        latitude = location.getLatitude();
-        TextView text1 = (TextView) findViewById(R.id.textView);
-        TextView text2 = (TextView) findViewById(R.id.textView2);
-        text1.setText("Longitude: " + longitude);
-        text2.setText("Latitude: " + latitude);
 
-    }
-
-    public void getTimeAndDate() {
-        Calendar calendar = Calendar.getInstance();
-        TextView text3 = (TextView) findViewById(R.id.textView4);
-        text3.setText("Time: " + calendar.getTime());
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

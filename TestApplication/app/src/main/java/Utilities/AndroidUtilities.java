@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.app.Activity;
 
 
 import com.example.chalang.testapplication.MainActivity;
@@ -23,13 +24,13 @@ import java.util.Date;
  * Created by Chalang on 12/19/2014.
  */
 public class AndroidUtilities implements LocationListener {
-    MainActivity main;
+    Activity main;
     Location locNet;
     Location locGps;
     Location locPass;
 
-    public AndroidUtilities(MainActivity main) {
-        this.main = main;
+    public AndroidUtilities(Activity context) {
+        this.main = context;
         initializeLocation();
     }
 
@@ -44,7 +45,7 @@ public class AndroidUtilities implements LocationListener {
         this.locNet = lm.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
         this.locGps = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
         this.locPass = lm.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
-        LocationListener ll = this.main;
+        LocationListener ll = this;
 
         // LocationRequest lr;
 //        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, ll);
